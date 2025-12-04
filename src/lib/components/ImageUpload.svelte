@@ -32,6 +32,10 @@
 		dragOver = false;
 	}
 
+	function handleClick() {
+		fileInput?.click();
+	}
+
 	async function processFile(file) {
 		// Validate file type
 		if (!file.type.startsWith('image/')) {
@@ -125,9 +129,10 @@
 		</div>
 	{:else}
 		<div
-			class="border-2 border-dashed rounded-lg p-8 text-center transition-colors {dragOver
+			class="border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer {dragOver
 				? 'border-blue-500 bg-blue-50'
 				: 'border-gray-300 hover:border-gray-400'}"
+			onclick={handleClick}
 			ondrop={handleDrop}
 			ondragover={handleDragOver}
 			ondragleave={handleDragLeave}
