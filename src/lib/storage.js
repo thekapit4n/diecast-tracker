@@ -1,15 +1,24 @@
 import { createClient } from '@supabase/supabase-js';
 
 /**
- * Storage utility for image uploads
- * Supports both Supabase Storage and can be extended for Vercel Blob
+ * Storage utility for image uploads using Supabase Storage
+ * Requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables
  */
 let supabaseClient = null;
 
-if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-	supabaseClient = createClient(
-		process.env.SUPABASE_URL,
-		process.env.SUPABASE_SERVICE_ROLE_KEY
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (supabaseUrl && supabaseServiceKey) {
+	supabaseClient = createClient(supabaseUrl, supabaseServiceKey, {
+		auth: {
+			autoRefreshToken: false,
+			persistSession: false
+		}
+	});
+} else {
+	console.warn(
+		'Supabase storage not configured. Please set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your .env file.'
 	);
 }
 
