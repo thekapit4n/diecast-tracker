@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 import { db } from '$lib/db/index.js';
 import { brands, diecasts } from '$lib/db/schema.js';
-import { distinct, ilike } from 'drizzle-orm';
+import { ilike } from 'drizzle-orm';
 
 /**
  * GET /api/brands
