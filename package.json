@@ -8,6 +8,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
+		"db:migrate": "node src/lib/db/migrate-cli.js",
 		"db:setup": "node src/lib/db/setup.js"
 	},
 	"devDependencies": {
@@ -25,6 +26,7 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.86.0",
+		"dotenv": "^17.2.3",
 		"drizzle-orm": "^0.44.7",
 		"postgres": "^3.4.7",
 		"workbox-precaching": "^7.4.0",

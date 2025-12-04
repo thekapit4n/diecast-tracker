@@ -1,6 +1,17 @@
+// Load environment variables if not already loaded (for CLI scripts)
+import dotenv from 'dotenv';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema.js';
+
+// Try to load .env file if running as a script (not in SvelteKit)
+if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+	try {
+		dotenv.config();
+	} catch (e) {
+		// dotenv already loaded or .env not found, that's okay
+	}
+}
 
 /**
  * Database connection using Supabase PostgreSQL
