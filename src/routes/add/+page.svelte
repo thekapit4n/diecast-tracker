@@ -2,11 +2,11 @@
 	import DiecastForm from '$lib/components/DiecastForm.svelte';
 	import { goto } from '$app/navigation';
 
-	function handleSubmit(diecast) {
+	function onSubmit(diecast) {
 		goto(`/diecast/${diecast.id}`);
 	}
 
-	function handleCancel() {
+	function onCancel() {
 		goto('/');
 	}
 </script>

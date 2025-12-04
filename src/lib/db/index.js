@@ -20,8 +20,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
  */
 const connectionString =
 	process.env.POSTGRES_URL_NON_POOLING ||
-	process.env.POSTGRES_URL ||
-	process.env.DATABASE_URL;
+	process.env.POSTGRES_URL;
 
 if (!connectionString) {
 	throw new Error(
